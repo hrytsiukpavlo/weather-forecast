@@ -72,14 +72,13 @@ fetch(history_URL + minus_one)
 fetch(current_URL)
     .then(response => response.json())
     .then(data => {
-        temperature_three.innerHTML = data.current.temp_c + ' °C';
+        temperature_three.innerHTML = Math.floor(data.current.temp_c) + ' °C';
         icon_three.innerHTML += '<img src=" '+ data.current.condition.icon +' " />';
         })
 
 fetch(future_URL)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         temperature_four.innerHTML = Math.floor(data.forecast.forecastday[0].day.avgtemp_c) + ' °C';
         temperature_five.innerHTML = Math.floor(data.forecast.forecastday[1].day.avgtemp_c) + ' °C';
         temperature_six.innerHTML = Math.floor(data.forecast.forecastday[2].day.avgtemp_c) + ' °C';
@@ -87,3 +86,4 @@ fetch(future_URL)
         icon_five.innerHTML += '<img src=" '+ data.forecast.forecastday[1].day.condition.icon +' " />';
         icon_six.innerHTML += '<img src=" '+ data.forecast.forecastday[2].day.condition.icon +' " />';
     })
+
