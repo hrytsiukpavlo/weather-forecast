@@ -39,13 +39,13 @@ const plus_one = new Date(Date.now() + 86400000).toJSON().slice(0,10);
 const plus_two = new Date(Date.now() + 86400000 * 2).toJSON().slice(0,10);
 const plus_three = new Date(Date.now() + 86400000 * 3).toJSON().slice(0,10);
 
-title_zero.innerHTML = minus_three;
-title_one.innerHTML = minus_two;
-title_two.innerHTML = minus_one;
-title_three.innerHTML = today;
-title_four.innerHTML = plus_one;
-title_five.innerHTML = plus_two;
-title_six.innerHTML = plus_three;
+title_zero.innerHTML = minus_three.slice(5,10);
+title_one.innerHTML = minus_two.slice(5,10);
+title_two.innerHTML = minus_one.slice(5,10);
+title_three.innerHTML = today.slice(5,10);
+title_four.innerHTML = plus_one.slice(5,10);
+title_five.innerHTML = plus_two.slice(5,10);
+title_six.innerHTML = plus_three.slice(5,10);
 
 
 fetch(history_URL + minus_three)
