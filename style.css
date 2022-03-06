@@ -102,13 +102,13 @@ body {
     }
 
     #cards {
-        flex-direction: column;
         height: 100%;
+        flex-wrap: wrap;
     }
 
     .card {
-        width: 20%;
-        height: 100%;
+        width: 40%;
+        height: 20%;
         border-radius: 10px;
     }
 
