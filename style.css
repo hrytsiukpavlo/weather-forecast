@@ -60,11 +60,15 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+    /* transition: transform 1s; */
 }
 
 .card:hover {
     box-shadow: 0 0 7px;
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
 }
 
 .card-title {
@@ -134,4 +138,22 @@ body {
     .card:hover {
         transform: scale(1);
     }
+}
+
+.card-front {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.card.is-flipped {
+    transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card-back {
+    display: none;
 }

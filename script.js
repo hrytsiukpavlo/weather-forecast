@@ -39,6 +39,83 @@ const plus_one = new Date(Date.now() + 86400000).toJSON().slice(0,10);
 const plus_two = new Date(Date.now() + 86400000 * 2).toJSON().slice(0,10);
 const plus_three = new Date(Date.now() + 86400000 * 3).toJSON().slice(0,10);
 
+card_zero.addEventListener('click', function() {
+    card_zero.classList.toggle('zero-flipped')
+    if (document.querySelector('.zero-flipped')) {
+        document.querySelector('.zero-front').style.display = 'none';
+        document.querySelector('.zero-back').style.display = 'flex';
+    } else {
+        document.querySelector('.zero-front').style.display = 'flex';
+        document.querySelector('.zero-back').style.display = 'none';
+    }
+})
+
+card_one.addEventListener('click', function() {
+    card_one.classList.toggle('one-flipped')
+    if (document.querySelector('.one-flipped')) {
+        document.querySelector('.one-front').style.display = 'none';
+        document.querySelector('.one-back').style.display = 'flex';
+    } else {
+        document.querySelector('.one-front').style.display = 'flex';
+        document.querySelector('.one-back').style.display = 'none';
+    }
+})
+
+card_two.addEventListener('click', function() {
+    card_two.classList.toggle('two-flipped')
+    if (document.querySelector('.two-flipped')) {
+        document.querySelector('.two-front').style.display = 'none';
+        document.querySelector('.two-back').style.display = 'flex';
+    } else {
+        document.querySelector('.two-front').style.display = 'flex';
+        document.querySelector('.two-back').style.display = 'none';
+    }
+})
+
+card_three.addEventListener('click', function() {
+        card_three.classList.toggle('three-flipped')
+        if (document.querySelector('.three-flipped')) {
+            document.querySelector('.three-front').style.display = 'none';
+            document.querySelector('.three-back').style.display = 'flex';
+        } else {
+            document.querySelector('.three-front').style.display = 'flex';
+            document.querySelector('.three-back').style.display = 'none';
+        }
+})
+
+card_four.addEventListener('click', function() {
+    card_four.classList.toggle('four-flipped')
+    if (document.querySelector('.four-flipped')) {
+        document.querySelector('.four-front').style.display = 'none';
+        document.querySelector('.four-back').style.display = 'flex';
+    } else {
+        document.querySelector('.four-front').style.display = 'flex';
+        document.querySelector('.four-back').style.display = 'none';
+    }
+})
+
+card_five.addEventListener('click', function() {
+    card_five.classList.toggle('five-flipped')
+    if (document.querySelector('.five-flipped')) {
+        document.querySelector('.five-front').style.display = 'none';
+        document.querySelector('.five-back').style.display = 'flex';
+    } else {
+        document.querySelector('.five-front').style.display = 'flex';
+        document.querySelector('.five-back').style.display = 'none';
+    }
+})
+
+card_six.addEventListener('click', function() {
+    card_six.classList.toggle('six-flipped')
+    if (document.querySelector('.six-flipped')) {
+        document.querySelector('.six-front').style.display = 'none';
+        document.querySelector('.six-back').style.display = 'flex';
+    } else {
+        document.querySelector('.six-front').style.display = 'flex';
+        document.querySelector('.six-back').style.display = 'none';
+    }
+})
+
 title_zero.innerHTML = minus_three.slice(5,10).replace('-', '.');
 title_one.innerHTML = minus_two.slice(5,10).replace('-', '.');
 title_two.innerHTML = minus_one.slice(5,10).replace('-', '.');
@@ -79,9 +156,9 @@ fetch(current_URL)
 fetch(future_URL)
     .then(response => response.json())
     .then(data => {
-        temperature_four.innerHTML = Math.floor(data.forecast.forecastday[0].day.avgtemp_c) + ' °C';
-        temperature_five.innerHTML = Math.floor(data.forecast.forecastday[1].day.avgtemp_c) + ' °C';
-        temperature_six.innerHTML = Math.floor(data.forecast.forecastday[2].day.avgtemp_c) + ' °C';
+        temperature_four.innerHTML = Math.floor(data.forecast.forecastday[0].day.maxtemp_c) + ' °C';
+        temperature_five.innerHTML = Math.floor(data.forecast.forecastday[1].day.maxtemp_c) + ' °C';
+        temperature_six.innerHTML = Math.floor(data.forecast.forecastday[2].day.maxtemp_c) + ' °C';
         icon_four.innerHTML += '<img src=" '+ data.forecast.forecastday[0].day.condition.icon +' " />';
         icon_five.innerHTML += '<img src=" '+ data.forecast.forecastday[1].day.condition.icon +' " />';
         icon_six.innerHTML += '<img src=" '+ data.forecast.forecastday[2].day.condition.icon +' " />';
