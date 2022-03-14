@@ -1,6 +1,29 @@
-const current_URL = 'http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=Kiev&aqi=no';
-const history_URL = 'http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=Kiev&dt=';
-const future_URL = 'http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=Kiev&days=3&aqi=no&alerts=no';
+const success = (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longtitude;
+    const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`;
+
+    fetch(geoApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            current_URL = `http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=${data.city}&aqi=no`;
+            history_URL = `http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=${data.city}&dt=`;
+            future_URL = `http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=${data.city}&days=3&aqi=no&alerts=no`;
+            render();
+        })
+        .catch(error => console.error(error))
+}
+
+const error = (error) => {
+    console.error(error)
+}
+
+navigator.geolocation.getCurrentPosition(success, error);
+
+
+let current_URL = 'http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=Kiev&aqi=no';
+let history_URL = 'http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=Kiev&dt=';
+let future_URL = 'http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=Kiev&days=3&aqi=no&alerts=no';
 
 const card_zero = document.querySelector('.card-zero');
 const title_zero = document.querySelector('.title-zero');
@@ -146,8 +169,8 @@ title_four.innerHTML = plus_one.slice(5,10).replace('-', '.');
 title_five.innerHTML = plus_two.slice(5,10).replace('-', '.');
 title_six.innerHTML = plus_three.slice(5,10).replace('-', '.');
 
-
-fetch(history_URL + minus_three)
+function render() {
+    fetch(history_URL + minus_three)
     .then(response => response.json())
     .then(data => {
         temperature_zero.innerHTML = Math.floor(data.forecast.forecastday[0].day.avgtemp_c) + ' °C';
@@ -192,4 +215,4 @@ fetch(future_URL)
         back_title_five.innerHTML += 'Condition: ' + data.forecast.forecastday[1].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[1].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[1].day.maxwind_kph + ' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[1].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[1].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[1].day.avgvis_km + ' KM' + '<br>' + 'Rain chance: ' + data.forecast.forecastday[1].day.daily_chance_of_rain + '%' + '<br>' + 'Snow chance: ' + data.forecast.forecastday[1].day.daily_chance_of_snow + '%';
         back_title_six.innerHTML += 'Condition: ' + data.forecast.forecastday[2].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[2].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[2].day.maxwind_kph + ' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[2].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[2].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[2].day.avgvis_km + ' KM' + '<br>' + 'Rain chance: ' + data.forecast.forecastday[2].day.daily_chance_of_rain + '%' + '<br>' + 'Snow chance: ' + data.forecast.forecastday[2].day.daily_chance_of_snow + '%';
     })
-
+}

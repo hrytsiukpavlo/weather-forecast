@@ -30,7 +30,6 @@ body {
 #container {
     width: 95vw;
     height: 80vh;
-    /* border: 1px solid black; */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -44,7 +43,6 @@ body {
 #cards {
     width: 95%;
     height: 75%;
-    /* border: 1px solid black; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,18 +61,16 @@ body {
     cursor: pointer;
     transform-style: preserve-3d;
     transform-origin: center right;
-    /* transition: transform 1s; */
+    padding: 1%;
 }
 
 .card:hover {
     box-shadow: 0 0 7px;
-    /* transform: scale(1.2); */
 }
 
 .card-title {
     width: 100%;
     height: 10%;
-    /* border: 1px solid black; */
     font-size: 1.5em;
     display: flex;
     justify-content: center;
@@ -84,7 +80,6 @@ body {
 .icon {
     width: 80%;
     height: 50%;
-    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,7 +88,6 @@ body {
 .temperature {
     width: 100%;
     height: 10%;
-    /* border: 1px solid black; */
     font-size: 1.5em;  
     display: flex;
     justify-content: center;
