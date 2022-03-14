@@ -39,13 +39,21 @@ const plus_one = new Date(Date.now() + 86400000).toJSON().slice(0,10);
 const plus_two = new Date(Date.now() + 86400000 * 2).toJSON().slice(0,10);
 const plus_three = new Date(Date.now() + 86400000 * 3).toJSON().slice(0,10);
 
+const back_title_zero = document.querySelector('.back-title-zero');
+const back_title_one = document.querySelector('.back-title-one');
+const back_title_two = document.querySelector('.back-title-two');
 const back_title_three = document.querySelector('.back-title-three');
+const back_title_four = document.querySelector('.back-title-four');
+const back_title_five = document.querySelector('.back-title-five');
+const back_title_six = document.querySelector('.back-title-six');
 
 card_zero.addEventListener('click', function() {
     card_zero.classList.toggle('zero-flipped')
     if (document.querySelector('.zero-flipped')) {
         document.querySelector('.zero-front').style.display = 'none';
         document.querySelector('.zero-back').style.display = 'flex';
+        document.querySelector('.zero-back').style.alignItems = 'center';
+        document.querySelector('.zero-back').style.justifyContent = 'center';
     } else {
         document.querySelector('.zero-front').style.display = 'flex';
         document.querySelector('.zero-back').style.display = 'none';
@@ -57,6 +65,8 @@ card_one.addEventListener('click', function() {
     if (document.querySelector('.one-flipped')) {
         document.querySelector('.one-front').style.display = 'none';
         document.querySelector('.one-back').style.display = 'flex';
+        document.querySelector('.one-back').style.alignItems = 'center';
+        document.querySelector('.one-back').style.justifyContent = 'center';
     } else {
         document.querySelector('.one-front').style.display = 'flex';
         document.querySelector('.one-back').style.display = 'none';
@@ -68,6 +78,8 @@ card_two.addEventListener('click', function() {
     if (document.querySelector('.two-flipped')) {
         document.querySelector('.two-front').style.display = 'none';
         document.querySelector('.two-back').style.display = 'flex';
+        document.querySelector('.two-back').style.alignItems = 'center';
+        document.querySelector('.two-back').style.justifyContent = 'center';
     } else {
         document.querySelector('.two-front').style.display = 'flex';
         document.querySelector('.two-back').style.display = 'none';
@@ -92,6 +104,8 @@ card_four.addEventListener('click', function() {
     if (document.querySelector('.four-flipped')) {
         document.querySelector('.four-front').style.display = 'none';
         document.querySelector('.four-back').style.display = 'flex';
+        document.querySelector('.four-back').style.alignItems = 'center';
+        document.querySelector('.four-back').style.justifyContent = 'center';
     } else {
         document.querySelector('.four-front').style.display = 'flex';
         document.querySelector('.four-back').style.display = 'none';
@@ -103,6 +117,8 @@ card_five.addEventListener('click', function() {
     if (document.querySelector('.five-flipped')) {
         document.querySelector('.five-front').style.display = 'none';
         document.querySelector('.five-back').style.display = 'flex';
+        document.querySelector('.five-back').style.alignItems = 'center';
+        document.querySelector('.five-back').style.justifyContent = 'center';
     } else {
         document.querySelector('.five-front').style.display = 'flex';
         document.querySelector('.five-back').style.display = 'none';
@@ -114,6 +130,8 @@ card_six.addEventListener('click', function() {
     if (document.querySelector('.six-flipped')) {
         document.querySelector('.six-front').style.display = 'none';
         document.querySelector('.six-back').style.display = 'flex';
+        document.querySelector('.six-back').style.alignItems = 'center';
+        document.querySelector('.six-back').style.justifyContent = 'center';
     } else {
         document.querySelector('.six-front').style.display = 'flex';
         document.querySelector('.six-back').style.display = 'none';
@@ -134,6 +152,7 @@ fetch(history_URL + minus_three)
     .then(data => {
         temperature_zero.innerHTML = Math.floor(data.forecast.forecastday[0].day.avgtemp_c) + ' °C';
         icon_zero.innerHTML += '<img src=" '+ data.forecast.forecastday[0].day.condition.icon +' " />';
+        back_title_zero.innerHTML += 'Condition: ' + data.forecast.forecastday[0].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[0].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[0].day.maxwind_kph +' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[0].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[0].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[0].day.avgvis_km + ' KM';
     })
 
 fetch(history_URL + minus_two)
@@ -141,6 +160,7 @@ fetch(history_URL + minus_two)
     .then(data => {
         temperature_one.innerHTML = Math.floor(data.forecast.forecastday[0].day.avgtemp_c) + ' °C';
         icon_one.innerHTML += '<img src=" '+ data.forecast.forecastday[0].day.condition.icon +' " />';
+        back_title_one.innerHTML += 'Condition: ' + data.forecast.forecastday[0].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[0].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[0].day.maxwind_kph +' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[0].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[0].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[0].day.avgvis_km + ' KM';
     })
 
 fetch(history_URL + minus_one)
@@ -148,6 +168,7 @@ fetch(history_URL + minus_one)
     .then(data => {
         temperature_two.innerHTML = Math.floor(data.forecast.forecastday[0].day.avgtemp_c) + ' °C';
         icon_two.innerHTML += '<img src=" '+ data.forecast.forecastday[0].day.condition.icon +' " />';
+        back_title_two.innerHTML += 'Condition: ' + data.forecast.forecastday[0].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[0].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[0].day.maxwind_kph +' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[0].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[0].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[0].day.avgvis_km + ' KM';
     })
 
 fetch(current_URL)
@@ -167,5 +188,8 @@ fetch(future_URL)
         icon_four.innerHTML += '<img src=" '+ data.forecast.forecastday[0].day.condition.icon +' " />';
         icon_five.innerHTML += '<img src=" '+ data.forecast.forecastday[1].day.condition.icon +' " />';
         icon_six.innerHTML += '<img src=" '+ data.forecast.forecastday[2].day.condition.icon +' " />';
+        back_title_four.innerHTML += 'Condition: ' + data.forecast.forecastday[0].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[0].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[0].day.maxwind_kph + ' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[0].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[0].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[0].day.avgvis_km + ' KM' + '<br>' + 'Rain chance: ' + data.forecast.forecastday[0].day.daily_chance_of_rain + '%' + '<br>' + 'Snow chance: ' + data.forecast.forecastday[0].day.daily_chance_of_snow + '%';
+        back_title_five.innerHTML += 'Condition: ' + data.forecast.forecastday[1].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[1].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[1].day.maxwind_kph + ' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[1].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[1].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[1].day.avgvis_km + ' KM' + '<br>' + 'Rain chance: ' + data.forecast.forecastday[1].day.daily_chance_of_rain + '%' + '<br>' + 'Snow chance: ' + data.forecast.forecastday[1].day.daily_chance_of_snow + '%';
+        back_title_six.innerHTML += 'Condition: ' + data.forecast.forecastday[2].day.condition.text + '<br>' + 'Avg. humidity: ' + data.forecast.forecastday[2].day.avghumidity + '%' + '<br>' + 'Max. wind: ' + data.forecast.forecastday[2].day.maxwind_kph + ' KPH' + '<br>' + 'Total precip: ' + data.forecast.forecastday[2].day.totalprecip_mm + ' MM' + '<br>' + 'UV-index: ' + data.forecast.forecastday[2].day.uv + '<br>' + 'Avg. visibility: ' + data.forecast.forecastday[2].day.avgvis_km + ' KM' + '<br>' + 'Rain chance: ' + data.forecast.forecastday[2].day.daily_chance_of_rain + '%' + '<br>' + 'Snow chance: ' + data.forecast.forecastday[2].day.daily_chance_of_snow + '%';
     })
 
