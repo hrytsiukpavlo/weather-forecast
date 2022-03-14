@@ -176,7 +176,7 @@ fetch(current_URL)
     .then(data => {
         temperature_three.innerHTML = Math.floor(data.current.temp_c) + ' °C';
         icon_three.innerHTML += '<img src=" '+ data.current.condition.icon +' " />';
-        back_title_three.innerHTML += 'Condition: ' + data.current.condition.text + '<br>' + 'Feels like: ' + Math.floor(data.current.feelslike_c) + ' °C' + '<br>' + 'Humidity: ' + data.current.humidity + '%' + '<br>' + 'Pressure: ' + data.current.pressure_mb + ' MB' + '<br>' + 'Wind: ' + data.current.wind_kph + ' KPH' + '<br>' + 'Wind direction: ' + data.current.wind_dir + '<br>' + 'Precip: ' + data.current.precip_mm + ' MM' + '<br>' + 'UV-index: ' + data.current.uv + '<br>' + 'Visibility: ' + data.current.vis_km + ' KM';
+        back_title_three.innerHTML += 'Condition: ' + data.current.condition.text + '<br>' + 'Feels like: ' + Math.floor(data.current.feelslike_c) + ' °C' + '<br>' + 'Humidity: ' + data.current.humidity + '%' + '<br>' + 'Wind: ' + data.current.wind_kph + ' KPH' + '<br>' + 'Wind direction: ' + data.current.wind_dir + '<br>' + 'Precip: ' + data.current.precip_mm + ' MM' + '<br>' + 'UV-index: ' + data.current.uv + '<br>' + 'Visibility: ' + data.current.vis_km + ' KM';
         })
 
 fetch(future_URL)
