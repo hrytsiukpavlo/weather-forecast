@@ -39,6 +39,8 @@ const plus_one = new Date(Date.now() + 86400000).toJSON().slice(0,10);
 const plus_two = new Date(Date.now() + 86400000 * 2).toJSON().slice(0,10);
 const plus_three = new Date(Date.now() + 86400000 * 3).toJSON().slice(0,10);
 
+const back_title_three = document.querySelector('.back-title-three');
+
 card_zero.addEventListener('click', function() {
     card_zero.classList.toggle('zero-flipped')
     if (document.querySelector('.zero-flipped')) {
@@ -77,6 +79,8 @@ card_three.addEventListener('click', function() {
         if (document.querySelector('.three-flipped')) {
             document.querySelector('.three-front').style.display = 'none';
             document.querySelector('.three-back').style.display = 'flex';
+            document.querySelector('.three-back').style.alignItems = 'center';
+            document.querySelector('.three-back').style.justifyContent = 'center';
         } else {
             document.querySelector('.three-front').style.display = 'flex';
             document.querySelector('.three-back').style.display = 'none';
@@ -151,6 +155,7 @@ fetch(current_URL)
     .then(data => {
         temperature_three.innerHTML = Math.floor(data.current.temp_c) + ' °C';
         icon_three.innerHTML += '<img src=" '+ data.current.condition.icon +' " />';
+        back_title_three.innerHTML += 'Condition: ' + data.current.condition.text + '<br>' + 'Feels like: ' + Math.floor(data.current.feelslike_c) + ' °C' + '<br>' + 'Humidity: ' + data.current.humidity + '%' + '<br>' + 'Pressure: ' + data.current.pressure_mb + ' MB' + '<br>' + 'Wind: ' + data.current.wind_kph + ' KPH' + '<br>' + 'Wind direction: ' + data.current.wind_dir + '<br>' + 'Precip: ' + data.current.precip_mm + ' MM' + '<br>' + 'UV-index: ' + data.current.uv + '<br>' + 'Visibility: ' + data.current.vis_km + ' KM';
         })
 
 fetch(future_URL)

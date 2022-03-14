@@ -156,4 +156,7 @@ body {
 
 .card-back {
     display: none;
+    font-size: 0.85em;
+    text-align: center;
+    height: 100%;
 }
