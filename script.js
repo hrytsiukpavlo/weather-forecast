@@ -8,20 +8,23 @@ const success = (position) => {
     fetch(geoApiUrl)
         .then(response => response.json())
         .then(data => {
-            const city = data.city.length ? data.city : 'Kiev';
-            current_URL = `http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=${city}&aqi=no`;
-            history_URL = `http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=${city}&dt=`;
-            future_URL = `http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=${city}&days=3&aqi=no&alerts=no`;
-            forecast_city.innerHTML += `Weather forecast for ${city}`
-            render();
+            if (data.city.length === 0) {
+                forecast_city.innerHTML += 'Your city has not been recognized, therefore it was atomatically set to Kyiv';
+                current_URL = 'http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=Kiev&aqi=no';
+                history_URL = 'http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=Kiev&dt=';
+                future_URL = 'http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=Kiev&days=3&aqi=no&alerts=no';
+                render();
+            } else {
+                current_URL = `http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=${data.city}&aqi=no`;
+                history_URL = `http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=${data.city}&dt=`;
+                future_URL = `http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=${data.city}&days=3&aqi=no&alerts=no`;
+                forecast_city.innerHTML += `Weather forecast for ${data.city}`
+                render();
+            }
+            
         })
         .catch(error => {
             console.error(error)
-            forecast_city.innerHTML += 'Your city has not been recognized, therefore it was atomatically set to Kyiv';
-            current_URL = 'http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=Kiev&aqi=no';
-            history_URL = 'http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=Kiev&dt=';
-            future_URL = 'http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=Kiev&days=3&aqi=no&alerts=no';
-            render();
         })
 }
 
