@@ -15,6 +15,12 @@ const success = (position) => {
                 future_URL = 'http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=Kiev&days=3&aqi=no&alerts=no';
                 render();
             } else {
+                if(data.city === 'Kyiv') {
+                    current_URL = 'http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=Kiev&aqi=no';
+                    history_URL = 'http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=Kiev&dt=';
+                    future_URL = 'http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=Kiev&days=3&aqi=no&alerts=no';
+                    render();
+                }
                 current_URL = `http://api.weatherapi.com/v1/current.json?key=4377fec0084548c996b185725222302&q=${data.city}&aqi=no`;
                 history_URL = `http://api.weatherapi.com/v1/history.json?key=4377fec0084548c996b185725222302&q=${data.city}&dt=`;
                 future_URL = `http://api.weatherapi.com/v1/forecast.json?key=4377fec0084548c996b185725222302&q=${data.city}&days=3&aqi=no&alerts=no`;
